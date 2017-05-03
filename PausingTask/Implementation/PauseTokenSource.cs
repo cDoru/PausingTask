@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using PausingTask.Contract;
 
@@ -6,8 +7,7 @@ namespace PausingTask.Implementation
 {
     public class PauseTokenSource : IPauseTokenSource
     {
-        internal static readonly Task CompletedTask = Task.FromResult(true);
-
+        private static readonly Task CompletedTask = Task.FromResult(true);
         private readonly object _lockObject = new Object();
         private bool _paused; // could use _resumeRequest as flag too
         private TaskCompletionSource<bool> _pauseResponse;

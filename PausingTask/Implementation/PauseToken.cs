@@ -5,30 +5,26 @@ namespace PausingTask.Implementation
 {
     public struct PauseToken : IPauseToken
     {
-        private readonly IPauseTokenSource _mSource;
+        private readonly IPauseTokenSource _source;
 
         public PauseToken(IPauseTokenSource source)
         {
-            _mSource = source;
+            _source = source;
         }
 
         public bool IsPaused
         {
-            get { return _mSource != null && _mSource.IsPaused; }
+            get { return _source != null && _source.IsPaused; }
         }
 
         public Task WaitWhilePausedAsync()
         {
-            return IsPaused
-                ? _mSource.WaitWhilePausedAsync()
-                : PauseTokenSource.CompletedTask;
+            return _source.WaitWhilePausedAsync();
         }
 
         public Task WaitWhilePausedWithResponseAsyc()
         {
-            return IsPaused
-                ? _mSource.WaitWhilePausedWithResponseAsyc()
-                : PauseTokenSource.CompletedTask;
+            return _source.WaitWhilePausedWithResponseAsyc();
         }
     }
 }
