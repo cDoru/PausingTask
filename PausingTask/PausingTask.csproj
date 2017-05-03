@@ -39,11 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPauseToken.cs" />
-    <Compile Include="IPauseTokenSource.cs" />
-    <Compile Include="PauseToken.cs" />
-    <Compile Include="PauseTokenSource.cs" />
+    <Compile Include="Contract\IPauseToken.cs" />
+    <Compile Include="Contract\IPauseTokenSource.cs" />
+    <Compile Include="Implementation\PauseToken.cs" />
+    <Compile Include="Implementation\PauseTokenSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Module\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

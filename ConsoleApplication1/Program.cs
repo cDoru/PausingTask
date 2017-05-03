@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using PausingTask;
+using PausingTask.Contract;
+using PausingTask.Implementation;
 
 namespace Demo
 {
@@ -42,6 +43,5 @@ namespace Demo
                 Console.WriteLine("Is Paused = {0}", token.IsPaused);
             }
         }
-
     }
 }

@@ -5,9 +5,9 @@ namespace PausingTask.Implementation
 {
     public struct PauseToken : IPauseToken
     {
-        private readonly PauseTokenSource _mSource;
+        private readonly IPauseTokenSource _mSource;
 
-        public PauseToken(PauseTokenSource source)
+        public PauseToken(IPauseTokenSource source)
         {
             _mSource = source;
         }
