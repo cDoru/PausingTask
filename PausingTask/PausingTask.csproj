@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPauseToken.cs" />
+    <Compile Include="IPauseTokenSource.cs" />
     <Compile Include="PauseToken.cs" />
     <Compile Include="PauseTokenSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

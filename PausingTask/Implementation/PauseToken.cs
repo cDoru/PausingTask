@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
+using PausingTask.Contract;
 
-namespace PausingTask
+namespace PausingTask.Implementation
 {
-    public struct PauseToken
+    public struct PauseToken : IPauseToken
     {
         private readonly PauseTokenSource _mSource;
 
@@ -20,14 +21,14 @@ namespace PausingTask
         {
             return IsPaused
                 ? _mSource.WaitWhilePausedAsync()
-                : PauseTokenSource.s_completedTask;
+                : PauseTokenSource.CompletedTask;
         }
 
         public Task WaitWhilePausedWithResponseAsyc()
         {
             return IsPaused
                 ? _mSource.WaitWhilePausedWithResponseAsyc()
-                : PauseTokenSource.s_completedTask;
+                : PauseTokenSource.CompletedTask;
         }
     }
 }

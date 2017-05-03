@@ -7,9 +7,14 @@ namespace Demo
 {
     class Program
     {
+        static IPauseTokenSource GetPauseTokenSource()
+        {
+            return new PauseTokenSource();
+        }
+
         static void Main(string[] args)
         {
-            var pausetoken = new PauseTokenSource();
+            var pausetoken = GetPauseTokenSource();
             Console.WriteLine("starting task");
             var task = new Task(() => RunningTask(pausetoken.Token), TaskCreationOptions.LongRunning);
             task.Start();
@@ -27,7 +32,7 @@ namespace Demo
             Console.ReadLine();
         }
 
-        private static async void RunningTask(PauseToken token)
+        private static async void RunningTask(IPauseToken token)
         {
             while (true)
             {
