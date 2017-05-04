@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Contract\IPauseToken.cs" />
     <Compile Include="Contract\IPauseTokenSource.cs" />
+    <Compile Include="Factory\PauseTokenSourceFactory.cs" />
     <Compile Include="Implementation\PauseToken.cs" />
     <Compile Include="Implementation\PauseTokenSource.cs" />
     <Compile Include="Module\HydrationModule.cs" />

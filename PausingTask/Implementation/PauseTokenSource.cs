@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using PausingTask.Contract;
 
@@ -18,7 +17,10 @@ namespace PausingTask.Implementation
             lock (_lockObject)
             {
                 if (_paused)
+                {
                     return;
+                }
+
                 _paused = true;
                 _pauseResponse = null;
                 _resumeRequest = new TaskCompletionSource<bool>();
@@ -32,7 +34,10 @@ namespace PausingTask.Implementation
             lock (_lockObject)
             {
                 if (!_paused)
+                {
                     return;
+                }
+
                 _paused = false;
                 resumeRequest = _resumeRequest;
                 _resumeRequest = null;
@@ -59,7 +64,10 @@ namespace PausingTask.Implementation
             lock (_lockObject)
             {
                 if (_paused)
+                {
                     return _pauseResponse.Task;
+                }
+
                 _paused = true;
                 _pauseResponse = new TaskCompletionSource<bool>();
                 _resumeRequest = new TaskCompletionSource<bool>();
@@ -77,7 +85,10 @@ namespace PausingTask.Implementation
             lock (_lockObject)
             {
                 if (!_paused)
+                {
                     return CompletedTask;
+                }
+
                 response = _pauseResponse;
                 resumeTask = _resumeRequest.Task;
             }
@@ -95,7 +106,7 @@ namespace PausingTask.Implementation
             get
             {
                 lock (_lockObject)
-                    return _paused;
+                { return _paused;}
             }
         }
 

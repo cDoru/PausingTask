@@ -21,10 +21,5 @@ namespace PausingTask.Implementation
         {
             return _source.WaitWhilePausedAsync();
         }
-
-        public Task WaitWhilePausedWithResponseAsyc()
-        {
-            return _source.WaitWhilePausedWithResponseAsyc();
-        }
     }
 }

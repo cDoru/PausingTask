@@ -6,6 +6,5 @@ namespace PausingTask.Contract
     {
         bool IsPaused { get; }
         Task WaitWhilePausedAsync();
-        Task WaitWhilePausedWithResponseAsyc();
     }
 }

@@ -8,7 +8,7 @@ namespace Demo
 {
     class Program
     {
-        static PauseTokenSource GetPauseTokenSource()
+        static IPauseTokenSource GetPauseTokenSource()
         {
             return new PauseTokenSource();
         }
@@ -18,10 +18,8 @@ namespace Demo
             var pausetoken = GetPauseTokenSource();
             Console.WriteLine("starting task");
 
-            new Task(()=> RunningTask(pausetoken.Token)).Start();
-
+            new Task(() => RunningTask(pausetoken.Token)).Start();
             Console.WriteLine("task started");
-
             Thread.Sleep(5000);
             pausetoken.Pause();
             Console.WriteLine("sleeping 5s");
@@ -31,9 +29,11 @@ namespace Demo
             pausetoken.Pause();
             Console.WriteLine("Press enter to exit...");
             Console.ReadLine();
+
+
         }
 
-        private static async Task RunningTask(IPauseToken token)
+        private static async void RunningTask(IPauseToken token)
         {
             var i = 0;
             Thread.Sleep(1000);
@@ -44,5 +44,5 @@ namespace Demo
                 await token.WaitWhilePausedAsync();
             }
         }
-    } 
+    }
 }

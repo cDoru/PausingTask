@@ -7,6 +7,8 @@ namespace PausingTask.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
+            
         }
     }
 }
+
